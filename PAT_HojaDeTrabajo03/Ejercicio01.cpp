@@ -7,15 +7,17 @@ int BusquedaBinaria(int* arr, int n)
 
 	while (bottom <= top)
 	{
-		mid = bottom + ((top - bottom)  >> 1);
+		mid = bottom + ((top - bottom) / 2);
 
 		if (arr[mid] < minimo)
 			minimo = arr[mid];
 
 		if (arr[mid] < arr[top])
-			top = mid;
-		else
+			top = mid-1;
+		else if (arr[mid] > arr[top])
 			bottom = mid + 1;
+		else
+			top--;
 	}
 	return minimo;
 }
